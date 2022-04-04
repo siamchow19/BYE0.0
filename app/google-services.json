@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "669259778483",
+    "project_id": "bookyourevent",
+    "storage_bucket": "bookyourevent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669259778483:android:abb8d91379ca845dcf63c6",
+        "android_client_info": {
+          "package_name": "com.example.bookyourevent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669259778483-l0019tfbsnjlkvlm5377fpe8gjbgjiaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDigodg_Li4ksmxVMMbkmj8hBfmnpY9xoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669259778483-l0019tfbsnjlkvlm5377fpe8gjbgjiaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
