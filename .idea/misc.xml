@@ -3,17 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_add_new_party_center.xml" value="0.358695652173913" />
+        <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_add_new_party_center.xml" value="0.1" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_client_history.xml" value="0.358695652173913" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_client_main.xml" value="0.25" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_client_profile.xml" value="0.358695652173913" />
-        <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_owner_home_page.xml" value="0.358695652173913" />
+        <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_owner_home_page.xml" value="0.22" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_owner_log_in.xml" value="0.358695652173913" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_owner_register.xml" value="0.358695652173913" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_party_center_detail.xml" value="0.358695652173913" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/activity_select_mode.xml" value="0.358695652173913" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/drawer_menu_owner.xml" value="0.35260416666666666" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/nav_header.xml" value="0.35260416666666666" />
+        <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/party_center_list_card.xml" value="0.358695652173913" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/layout/party_center_view.xml" value="0.358695652173913" />
         <entry key="..\:/Android Projects/BookYourEventNoman/BookYourEvent/app/src/main/res/menu/drawer_menu_owner.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable/array.xml" value="0.2526041666666667" />

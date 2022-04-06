@@ -31,4 +31,14 @@
         <item>Neptune</item>
     </string-array>
 
+    <string-array name="Division_Dhaka">
+        <item>Dhaka</item>
+    </string-array>
+
+    <string-array name="District_Dhaka">
+        <item>Dhanmondi</item>
+        <item>Mohammadpur</item>
+        <item>Motijheel</item>
+    </string-array>
+
 </resources>

@@ -16,13 +16,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.bookyourevent.R;
+import com.example.bookyourevent.database_controller.PartyCenter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -33,11 +29,11 @@ public class OwnerHomePage extends AppCompatActivity implements NavigationView.O
     Toolbar toolbar;
     RecyclerView recyclerView;
 
-    DatabaseReference databaseReference;
+
     FirebaseAuth auth;
 
     OwnerHomePageAdapter adapter;
-    ArrayList<AddPartyCenterHelper> list;
+    ArrayList<PartyCenter> list;
     OwnerHomePageAdapter.OnNoteListenerHome onNoteListenerHome;
 
     String ownerId;
@@ -53,7 +49,7 @@ public class OwnerHomePage extends AppCompatActivity implements NavigationView.O
         toolbar = findViewById(R.id.toolbar_owner_home);
         // recyclerView = findViewById(R.id.featured_recycler_owner_home);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Party Centers");
+
         auth = FirebaseAuth.getInstance();
 
         recyclerView = findViewById(R.id.recycler_party_center_list);
@@ -74,32 +70,9 @@ public class OwnerHomePage extends AppCompatActivity implements NavigationView.O
         }
 
 
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    AddPartyCenterHelper helper = dataSnapshot.getValue(AddPartyCenterHelper.class);
-                    if(helper.getOwnerId().equals(ownerId) && helper.getPartyCenterStatus().equals("Pending")){
-                        list.add(helper);
-                    }
-
-                }
-
-                setOnClickListener();
-                adapter = new OwnerHomePageAdapter(list, getApplicationContext(), onNoteListenerHome);
-                recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                recyclerView.setAdapter(adapter);
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(OwnerHomePage.this, "Error occurred on product list", Toast.LENGTH_SHORT).show();
-            }
-        });
+        /****
+         * use adapter to show list of party center in recycle view
+         */
 
     }
 
@@ -107,11 +80,9 @@ public class OwnerHomePage extends AppCompatActivity implements NavigationView.O
         onNoteListenerHome = new OwnerHomePageAdapter.OnNoteListenerHome() {
             @Override
             public void onNoteClick(int position) {
-                Log.i("productID", list.get(position).getPartyCenterId());
-                Intent intent = new Intent (OwnerHomePage.this, PartyCenterDetail.class);
-                intent.putExtra("partyCenterId",list.get(position).getPartyCenterId());
-                intent.putExtra("ownerId",ownerId);
-                startActivity(intent);
+                /***
+                 * goto to party center detail page
+                 */
             }
         };
     }

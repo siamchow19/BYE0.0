@@ -23,16 +23,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.bookyourevent.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+
 import com.squareup.picasso.Picasso;
 
 public class AddNewPartyCenter extends AppCompatActivity implements AdapterView.OnItemSelectedListener, NavigationView.OnNavigationItemSelectedListener {
@@ -52,8 +49,8 @@ public class AddNewPartyCenter extends AppCompatActivity implements AdapterView.
 
     private EditText nameOfPartyCenter, termsAndConditions, capacity, startingPrice, partyCenterEmail, partyCenterContactNo;
 
-    private DatabaseReference databaseReference;
-    private StorageReference storageReference;
+
+
     private FirebaseAuth auth;
 
     private String ownerId;
@@ -85,8 +82,7 @@ public class AddNewPartyCenter extends AppCompatActivity implements AdapterView.
         partyCenterEmail = findViewById(R.id.add_party_center_email);
         partyCenterContactNo = findViewById(R.id.add_party_center_contact_no);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Party Centers");
-        storageReference = FirebaseStorage.getInstance().getReference("Party Centers");
+
 
 
         Bundle extra = getIntent().getExtras();
@@ -125,7 +121,7 @@ public class AddNewPartyCenter extends AppCompatActivity implements AdapterView.
         addNewPartyCenterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveData();
+
             }
         });
     }
@@ -142,52 +138,6 @@ public class AddNewPartyCenter extends AppCompatActivity implements AdapterView.
     }
 
 
-    private void saveData() {
-        String partyCenterName = nameOfPartyCenter.getText().toString();
-        String terms = termsAndConditions.getText().toString();
-        String maximumCapacity = capacity.getText().toString();
-        String price = startingPrice.getText().toString();
-        String email = partyCenterEmail.getText().toString();
-        String contact = partyCenterContactNo.getText().toString();
-
-
-        if (partyCenterName.isEmpty() || terms.isEmpty() || maximumCapacity.isEmpty() || price.isEmpty() || email.isEmpty()|| contact.isEmpty() || imageView.equals(R.mipmap.ic_launcher_round)) {
-            Toast.makeText(this, "Empty credential", Toast.LENGTH_SHORT).show();
-        } else {
-            StorageReference ref = storageReference.child(System.currentTimeMillis() + "." + getExtension(imageUri));
-            ref.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    Task<Uri> myUri = taskSnapshot.getStorage().getDownloadUrl();
-                    while (!myUri.isSuccessful()) ;
-                    Uri imageUrl = myUri.getResult();
-
-
-                    String uploadId = databaseReference.push().getKey();
-                    AddPartyCenterHelper helper = new AddPartyCenterHelper(spinnerDivision.getSelectedItem().toString(), spinnerDistrict.getSelectedItem().toString(), spinnerPoliceStation.getSelectedItem().toString(), partyCenterName, "" ,terms, maximumCapacity, price, imageUrl.toString(), uploadId, ownerId, "Pending", email, contact);
-                    databaseReference.child(uploadId).setValue(helper);
-                    Toast.makeText(AddNewPartyCenter.this, "Upload successful", Toast.LENGTH_SHORT).show();
-                    spinnerDivision.setEnabled(true);
-                    spinnerDistrict.setEnabled(true);
-                    spinnerPoliceStation.setEnabled(true);
-                    imageView.setImageResource(R.mipmap.ic_launcher_round);
-                    termsAndConditions.setText(null);
-                    capacity.setText(null);
-                    startingPrice.setText(null);
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(AddNewPartyCenter.this, "Upload failed", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-
-    }
-
-
     private String getExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
@@ -196,9 +146,6 @@ public class AddNewPartyCenter extends AppCompatActivity implements AdapterView.
 
     //Image Selection
     private void openFileChooser() {
-       /* spinnerDivision.setEnabled(false);
-        spinnerDistrict.setEnabled(false);
-        spinnerPoliceStation.setEnabled(false);*/
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);

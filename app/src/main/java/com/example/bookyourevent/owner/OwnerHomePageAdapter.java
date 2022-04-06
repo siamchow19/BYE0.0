@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookyourevent.R;
+import com.example.bookyourevent.database_controller.PartyCenter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -21,11 +23,11 @@ import java.util.ArrayList;
 
 public class OwnerHomePageAdapter extends RecyclerView.Adapter<OwnerHomePageAdapter.HomeViewHolder>{
 
-    ArrayList<AddPartyCenterHelper> arrayList;
+    ArrayList<PartyCenter> arrayList;
     OnNoteListenerHome mOnNoteListenerHome;
     Context context;
 
-    public OwnerHomePageAdapter(ArrayList<AddPartyCenterHelper> arrayList, Context context, OnNoteListenerHome mOnNoteListenerHome) {
+    public OwnerHomePageAdapter(ArrayList<PartyCenter> arrayList, Context context, OnNoteListenerHome mOnNoteListenerHome) {
         this.arrayList = arrayList;
         this.context = context;
         this.mOnNoteListenerHome = mOnNoteListenerHome;
@@ -41,11 +43,8 @@ public class OwnerHomePageAdapter extends RecyclerView.Adapter<OwnerHomePageAdap
 
     @Override
     public void onBindViewHolder(@NonNull OwnerHomePageAdapter.HomeViewHolder holder, int position) {
-        AddPartyCenterHelper helper = arrayList.get(position);
-        holder.partyCenterName.setText(helper.getPartyCenterName());
-        holder.capacity.setText(helper.getCapacity());
-        holder.address.setText(helper.getPartyCenterAddress());
-        holder.startingPrice.setText(helper.getStartingPrice());
+        PartyCenter helper = arrayList.get(position);
+
 
     }
 
