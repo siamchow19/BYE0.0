@@ -27,9 +27,6 @@
             android:name=".owner.OwnerLogIn"
             android:exported="false" />
         <activity
-            android:name=".owner.OwnerLogInActivity"
-            android:exported="false" />
-        <activity
             android:name=".owner.SelectModeActivity"
             android:exported="false" />
         <activity

@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.bookyourevent.R;
@@ -23,9 +24,10 @@ import java.util.regex.Pattern;
 
 public class OwnerRegister extends AppCompatActivity {
 
-    private EditText OwnerName, OwnerMobile, OwnerEmail, OwnerPass, OwnerAddress;
+    private EditText OwnerName, OwnerMobile, OwnerEmail, OwnerPass, OwnerAddress, OwnerTin;
     private Button ownerRegisterButton;
     private FirebaseAuth auth;
+    private ImageView OwnerImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class OwnerRegister extends AppCompatActivity {
         OwnerPass = findViewById(R.id.owner_password);
         OwnerAddress = findViewById(R.id.owner_address);
         ownerRegisterButton = findViewById(R.id.owner_register_button);
+        OwnerTin = findViewById(R.id.owner_tin);
+        OwnerImageView = findViewById(R.id.add_owner_image);
         auth = FirebaseAuth.getInstance();
 
         ownerRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -50,14 +54,17 @@ public class OwnerRegister extends AppCompatActivity {
     }
 
     private void loadData() {
-        String ownerName, ownerEmail, ownerPassword;
+        String ownerName, ownerEmail, ownerPassword,ownerTinNumber, ownerAddress, ownerContact;
         ownerName = OwnerName.getText().toString();
         ownerEmail = OwnerEmail.getText().toString();
         ownerPassword = OwnerPass.getText().toString();
+        ownerTinNumber = OwnerTin.getText().toString();
+        ownerAddress = OwnerAddress.getText().toString();
+        ownerContact = OwnerMobile.getText().toString();
 
-        if (TextUtils.isEmpty(ownerEmail) || TextUtils.isEmpty(ownerName) || TextUtils.isEmpty(ownerPassword)) {
+        if (TextUtils.isEmpty(ownerEmail) || TextUtils.isEmpty(ownerName) || TextUtils.isEmpty(ownerPassword)|| TextUtils.isEmpty(ownerTinNumber)|| TextUtils.isEmpty(ownerAddress)|| TextUtils.isEmpty(ownerContact)){
             Toast.makeText(this, "Empty Credential", Toast.LENGTH_SHORT).show();
-        } else if (ownerPassword.length() < 6) {
+        }else if (ownerPassword.length() < 6) {
             Toast.makeText(this, "Password too small", Toast.LENGTH_SHORT).show();
         } else if (!Patterns.EMAIL_ADDRESS.matcher(ownerEmail.trim()).matches()) {
             Toast.makeText(this, "Invalid Email", Toast.LENGTH_SHORT).show();
